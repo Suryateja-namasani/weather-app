@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./weather.css";
 import axios from "axios";
 
-const apiKey = "73db1f3cb5cfcd88df62bd75bb8c57e3";
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
 const LocationSearch = ({ locationChange }) => {
   const [location, setLocation] = useState("");
@@ -36,7 +36,8 @@ const WeatherInfo = ({ weatherInfo }) => {
     <div className="weather-info">
       <img
         className="weather-info-image"
-        src={`/${weatherInfo.weather[0].icon}.png`}
+        src={`${process.env.PUBLIC_URL}/${weatherInfo.weather[0].icon}.png`}
+
         alt={weatherInfo.weather[0].description}
       />
       <div className="weather-info-temp">{celsiusTemperature} °C</div>
